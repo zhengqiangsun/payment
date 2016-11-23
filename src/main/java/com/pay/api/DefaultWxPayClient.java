@@ -144,43 +144,6 @@ public class DefaultWxPayClient implements WxPayClient {
 	
 	public static void main(String[] args) {
 		
-		String url = "https://api.mch.weixin.qq.com/secapi/pay/refund";
-		String appId = "wx6995fafb55298a6d";
-		String mchId = "1281260301";
-		String privateKey = "guanai2015A9B43A4BEBA3DD79189848";
-		String path = "/usr/local/cert/apiclient_cert.p12";
-		String pass = "1281260301";
-		/**
-		 * 微信退款
-		 */
-		WxPayClient client  = new DefaultWxPayClient(url, appId, mchId, privateKey);
-		WxPayTradeRefundRequest request = new WxPayTradeRefundRequest();
-		JSONObject bizContent = new JSONObject();
-		bizContent.put("transaction_id", "4008002001201611220494375074");
-		bizContent.put("out_refund_no", String.valueOf(System.currentTimeMillis()));
-		bizContent.put("total_fee", "1");
-		bizContent.put("refund_fee", "1");
-		bizContent.put("op_user_id", "20161121");
-		request.setBizContent(bizContent.toJSONString());
-		WxPayTradeRefundResponse rsp = client.execute(request,path,pass);
-		System.out.println(JSON.toJSONString(rsp));
-		/**
-		 * 微信下单
-		 */
-		url = "https://api.mch.weixin.qq.com/pay/unifiedorder";
-		WxPayClient orderClient = new DefaultWxPayClient(url, appId, mchId, privateKey);
-		WxPayTradeCreateRequest creq = new WxPayTradeCreateRequest();
-		bizContent = new JSONObject();
-		bizContent.put("body", "体检通付费中心-体检套餐购买");
-		bizContent.put("out_trade_no", String.valueOf(System.currentTimeMillis()));
-		bizContent.put("total_fee", "1");
-		bizContent.put("spbill_create_ip", "116.226.83.212");
-		bizContent.put("trade_type", "JSAPI");
-		bizContent.put("openid", "");
-		bizContent.put("notify_url", "http://120.26.140.174:8600/wxpay/callback");
-		creq.setBizContent(bizContent.toJSONString());
-		WxPayTradeCreateResponse crsp = orderClient.execute(creq);
-		System.out.println(JSON.toJSONString(crsp));
 	}
 
 

@@ -115,39 +115,7 @@ public class DefaultAlipayClient implements AlipayClient {
 	}
 	
 	public static void main(String[] args) {
-		String notifyUrl = "http://devpay.360guanai.com/alipay/callback";
-		String returnUrl = "";
-		String partner = "2088611557852048";
-		String privateKey = "MIICdQIBADANBgkqhkiG9w0BAQEFAASCAl8wggJbAgEAAoGBAN5TD1lGkToWqqBmS6Ht6DvuVQVzYd2sankdYfwWbPwoFn2Bbt7/jCKVVpSAqtmRT+gfDvYDat5XywrHA7EbZsOghddErPXGoN/GkK6Q6QjvMizgxS3EcdN3hHw3yX/mPPVvypXgf0X69ebbVMQwdzKJy+FdZOSjziGgJSUYuxg/AgMBAAECgYBUMri5YtRVX4g3PwadyPAO4nAopE4IGego/kvBoOydgsEhvwcyRS3ZWx1zGFecFkBg9IJCAYFTu4QWDNEFHg+IiizflNkLttDdUd8XJhTBt7ZRzYYZLgoviKEIOHkELWIL3iOjzirQZ86ndrRixfQ2AZqDctc+Oa+sUp+vqODlQQJBAPs5H4NHXOJpLaC5WRXWjaYprfbhv+sl3XuqXNi6k6hEjCnZXqALMarYmy57idFV7NhuQSMP0QkOTPvreqB7LVkCQQDijURXe8moouvrtKre6kyeZMWrzCxp6MM/9isnwtaOr/4Awl539Vo3c9G0kK7Q7Wmb6B1t1anvg1O7FOHfQ0dXAkARmj8LA8UOWDBKQrJrRU1Hh0QZOFgqMc0DDTzUMr6F28e2ZvSqYh5oyiSVbTKK6Gpf/9mwizsqV0YtoKJG/FqBAkAbzpMQ2dTKqhSi/a3rZn65Ak1w5MKezT8J3sE1RCjpophep3zI5IiKPeEDdK7AXiOUS00xagRNraTdVZbTvIJJAkAnT5/BaJyxsaa/mNm381dNZxlNtfec28np4YJMKEqp2tMtdbC9HjlMHje92Cf1ZNhaCdZuJmtxcraabfBmt2mt";
-		/**
-		 * 即时到账退款接口
-		 */
-		AlipayClient client = new DefaultAlipayClient(partner, privateKey, notifyUrl);
-		AlipayTradePwdRefundRequest request = new AlipayTradePwdRefundRequest();
-		JSONObject jsonObject = new JSONObject();
-		jsonObject.put("seller_user_id", partner);
-		jsonObject.put("refund_date", DateUtils.format(new Date(), "yyyy-MM-dd HH:mm:ss"));
-		jsonObject.put("batch_no", DateUtils.format(new Date(), "yyyyMMdd") + DateUtils.format(new Date(), "HHmmss"));
-		jsonObject.put("batch_num", "1");
-		jsonObject.put("detail_data", "2016112221001004340232382403"+"^"+"0.01"+"^"+"退款");
-		request.setBizContent(jsonObject.toJSONString());
-//		String formHtml = client.specialExecute(request);
-//		System.out.println(formHtml);
 		
-		/**
-		 * 即时到账交易接口
-		 */
-		AlipayTradeDirectPayRequest directPayReq = new AlipayTradeDirectPayRequest();
-		jsonObject = new JSONObject();
-		jsonObject.put("seller_user_id", partner);
-		jsonObject.put("out_trade_no", String.valueOf(System.currentTimeMillis()));
-		jsonObject.put("subject", "关爱体检通");
-		jsonObject.put("payment_type", "1");
-		jsonObject.put("total_fee", "0.01");
-		jsonObject.put("seller_email", "jiyunlin@shzztj.com");
-		directPayReq.setBizContent(jsonObject.toJSONString());
-		String directPayFormHtml = client.specialExecute(directPayReq);
-		System.out.println(directPayFormHtml);
 	}
 	
 }
